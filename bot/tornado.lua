@@ -232,6 +232,7 @@ function create_config( )
 	"whitelist",
 	"msg_checks",
         "write",
+        "plugins"
         
     },
     sudo_users = {174770816},--Sudo users
