@@ -165,7 +165,7 @@ local function run(msg, matches)
   end
 
   -- Enable a plugin
-  if matches[1] == 'enable' and is_sudo(msg) then --after changed to moderator mode, set only sudo
+  if matches[1] == '+' and is_sudo(msg) then --after changed to moderator mode, set only sudo
     local plugin_name = matches[2]
     print("enable: "..matches[2])
     return enable_plugin(plugin_name)
@@ -180,7 +180,7 @@ local function run(msg, matches)
   end
 
   -- Disable a plugin
-  if matches[1] == 'disable' and is_sudo(msg) then --after changed to moderator mode, set only sudo
+  if matches[1] == '-' and is_sudo(msg) then --after changed to moderator mode, set only sudo
     if matches[2] == 'plugins' then
     	return 'این پلایگن نمی تواند غیر فعال شود'
     end
