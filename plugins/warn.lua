@@ -146,7 +146,7 @@ local function run(msg, matches)
  local receiver = get_receiver(msg)
  if msg.to.type == 'user' then return end
  --endif--
- if not is_momod(msg) then return 'You Are Not Mod' end
+ if not is_momod(msg) then return 'You Are Not Mod In Focus Bot' end
  --endif--
  ----------------------------------
  if matches[1]:lower() == 'warn' and not matches[2] then -- (on reply) /warn
