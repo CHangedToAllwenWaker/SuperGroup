@@ -1,3 +1,4 @@
+
 local function warn_by_username(extra, success, result) -- /warn <@username>
   if success == 1 then  
   local msg = result
@@ -14,31 +15,31 @@ local function warn_by_username(extra, success, result) -- /warn <@username>
   end
 ----------------------------------
   if is_momod2(msg.id, target) and not is_admin2(extra.fromid) then
-  return send_msg(receiver, 'شما نمیتوانید به مدیر گروه اخطار بدهید!', ok_cb, false) end
+  return send_msg(receiver, 'You Can t Warn Group Leader', ok_cb, false) end
 --endif--
-  if is_admin2(msg.id) then return send_msg(receiver, 'شما نمیتوانید به ادمین ربات اخطار بدهید!', ok_cb, false) end
+  if is_admin2(msg.id) then return send_msg(receiver, 'You Can t Warn Mods & Sudoers', ok_cb, false) end
 --endif--
   if value then
    if value == '1' then
     redis:hset(hash, msg.id, '2')
-   text = '[ '..name..' ]\n شما به دلیل رعایت نکردن قوانین اخطار دریافت میکنید\nتعداد اخطار های شما : ۲/۴'
+   text = '[ '..name..' ]\nYou Re Warned !\nNumber Of Your Warns 2/4\nFor Unwarn Go To @AllwenPvBot'
    elseif value == '2' then
   redis:hset(hash, msg.id, '3')
-  text = '[ '..name..' ]\n شما به دلیل رعایت نکردن قوانین اخطار دریافت میکنید\nتعداد اخطار های شما : ۳/۴'
+  text = '[ '..name..' ]\nYou Are Warned !\nNumber Of Your Warns 3/4\nFor Unwarn Go To @AllwenPvBot'
    elseif value == '3' then
    redis:hdel(hash, msg.id, '0')
    local hash =  'banned:'..target
    redis:sadd(hash, msg.id)
-  text = '[ '..name..' ]\n به دلیل رعایت نکردن قوانین از گروه اخراج شد (banned)\nتعداد اخطار ها : ۴/۴'
+  text = '[ '..name..' ]\nYou re Warned And Kicked !\nNumber Of Your Warns Is 4\4\n For Back To Group Go To @AllwenPvBot'
   chat_del_user(receiver, 'user#id'..msg.id, ok_cb, false)
    end
   else
    redis:hset(hash, msg.id, '1')
-   text = '[ '..name..' ]\n شما به دلیل رعایت نکردن قوانین اخطار دریافت میکنید\nتعداد اخطار های شما : ۱/۴'
+   text = '[ '..name..' ]\nYou Re Warned !\nNumber Of Your Warns 1/4\nFor Unwarn Go To @AllwenPvBot'
   end
   send_msg(receiver, text, ok_cb, false)
   else
-   send_msg(receiver, ' نام کاربری پیدا نشد.', ok_cb, false)
+   send_msg(receiver, 'Username Not Found', ok_cb, false)
   end
 end
 
@@ -59,27 +60,27 @@ local function warn_by_reply(extra, success, result) -- (on reply) /warn
   end
 ----------------------------------
   if is_momod2(msg.from.id, msg.to.id) and not is_admin2(extra.fromid) then
-  return send_msg(receiver, 'شما نمیتوانید به مدیر گروه اخطار بدهید!', ok_cb, false) end
+  return send_msg(receiver, 'You Can t Warn Mods', ok_cb, false) end
 --endif--
-  if is_admin2(msg.from.id) then return send_msg(receiver, 'شما نمیتوانید به ادمین ربات اخطار بدهید!', ok_cb, false) end
+  if is_admin2(msg.from.id) then return send_msg(receiver, 'You Can t Warn Mods', ok_cb, false) end
 --endif--
   if value then
    if value == '1' then
     redis:hset(hash, msg.from.id, '2')
-   text = '[ '..name..' ]\n .شما به دلیل رعایت نکردن قوانین اخطار دریافت میکنید\nتعداد اخطار های شما : ۲/۴'
+   text = '[ '..name..' ] \n You Re Warned !\nNumber Of Your Warns 2/4\nFor Unwarn Go To @AllwenPvBot '
    elseif value == '2' then
   redis:hset(hash, msg.from.id, '3')
-  text = '[ '..name..' ]\n شما به دلیل رعایت نکردن قوانین اخطار دریافت میکنید.\nتعداد اخطار های شما : ۳/۴'
+  text = '[ '..name..' ] \n You Re Warned !\nNumber Of Your Warns 3/4\nFor Unwarn Go To @AllwenPvBot '
    elseif value == '3' then
    redis:hdel(hash, msg.from.id, '0')
-  text = '[ '..name..' ]\n به دلیل رعایت نکردن قوانین از گروه اخراج شد. (banned)\nتعداد اخطار ها : ۴/۴'
+  text = '[ '..name..' ] \nYou re Warned And Kicked !\nNumber Of Your Warns Is 4\4\n For Back To Group Go To @AllwenPvBot '
   local hash =  'banned:'..target
   redis:sadd(hash, msg.from.id)
   chat_del_user(receiver, 'user#id'..msg.from.id, ok_cb, false)
    end
   else
    redis:hset(hash, msg.from.id, '1')
-   text = '[ '..name..' ]\n شما به دلیل رعایت نکردن قوانین اخطار دریافت میکنید.\nتعداد اخطار های شما : ۱/۴'
+   text = '[ '..name..' ]\nYou Re Warned !\nNumber Of Your Warns 1/4\nFor Unwarn Go To @AllwenPvBot'
   end
   reply_msg(extra.Reply, text, ok_cb, false)
 end
@@ -101,13 +102,13 @@ local function unwarn_by_username(extra, success, result) -- /unwarn <@username>
 --endif--
   if value then
   redis:hdel(hash, msg.id, '0')
-  text = 'اخطار های کاربر ('..msg.id..') پاک شد\nتعداد اخطار ها : ۰/۴'
+  text= '1 Of Your Warn Has Been Removed'
   else
-   text = 'این کاربر اخطاری دریافت نکرده است'
+   text = 'This Member Doesnt Have Any Warns'
   end
   send_msg(receiver, text, ok_cb, false)
   else
-   send_msg(receiver, ' نام کاربری پیدا نشد.', ok_cb, false)
+   send_msg(receiver, 'Username Not Found', ok_cb, false)
   end
 end
 
@@ -128,9 +129,9 @@ local function unwarn_by_reply(extra, success, result) -- (on reply) /unwarn
 --endif--
   if value then
   redis:hdel(hash, msg.from.id, '0')
-  text = 'اخطار های کاربر ('..msg.from.id..') پاک شد\nتعداد اخطار ها : ۰/۴'
+  text = '1 Of Your Warns Has Been Removed'
   else
-   text = 'این کاربر اخطاری دریافت نکرده است'
+   text = 'This Member Doesnt Have Any Warns'
   end
   reply_msg(extra.Reply, text, ok_cb, false)
 end
@@ -145,19 +146,19 @@ local function run(msg, matches)
  local receiver = get_receiver(msg)
  if msg.to.type == 'user' then return end
  --endif--
- if not is_momod(msg) then return 'شما مدیر نیستید' end
+ if not is_momod(msg) then return 'You Are Not Mod' end
  --endif--
  ----------------------------------
  if matches[1]:lower() == 'warn' and not matches[2] then -- (on reply) /warn
   if msg.reply_id then
     local Reply = msg.reply_id
     msgr = get_message(msg.reply_id, warn_by_reply, {receiver=receiver, Reply=Reply, target=target, fromid=fromid})
-  else return 'از نام کاربری یا ریپلی کردن پیام کاربر برای اخطار دادن استفاده کنید' end
+  else return 'Use Reply Or Username To Warn' end
  --endif--
  end
  if matches[1]:lower() == 'warn' and matches[2] then -- /warn <@username>
    if string.match(user, '^%d+$') then
-      return 'از نام کاربری یا ریپلی کردن پیام کاربر برای اخطار دادن استفاده کنید'
+      return 'Use Replay Or Username For Warn'
     elseif string.match(user, '^@.+$') then
       username = string.gsub(user, '@', '')
       msgr = res_user(username, warn_by_username, {receiver=receiver, user=user, target=target, fromid=fromid})
@@ -167,12 +168,12 @@ local function run(msg, matches)
   if msg.reply_id then
     local Reply = msg.id
     msgr = get_message(msg.reply_id, unwarn_by_reply, {receiver=receiver, Reply=Reply, target=target, fromid=fromid})
-  else return 'از نام کاربری یا ریپلی کردن استفاده کنید' end
+  else return 'Use Reply Or Username To Warn' end
  --endif--
  end
  if matches[1]:lower() == 'unwarn' and matches[2] then -- /unwarn <@username>
    if string.match(user, '^%d+$') then
-      return 'از نام کاربری یا ریپلی کردن استفاده کنید'
+      return 'Use Reply Or Username For Warn'
     elseif string.match(user, '^@.+$') then
       username = string.gsub(user, '@', '')
       msgr = res_user(username, unwarn_by_username, {receiver=receiver, user=user, target=target, fromid=fromid})
@@ -189,3 +190,5 @@ return {
   }, 
   run = run 
 }
+
+--By Allwen
