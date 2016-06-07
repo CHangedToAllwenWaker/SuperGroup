@@ -6,7 +6,7 @@ end
 
 return {
 patterns = {
-"^![Tt]ornado$",
+"^![Ff]ocus$",
 
 },
 run = run
