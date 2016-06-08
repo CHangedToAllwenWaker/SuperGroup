@@ -205,7 +205,7 @@ else
 
    rm -r ../.telegram-cli/state
 
-   ./tg/bin/telegram-cli -k ./tg/tg-server.pub -s ./bot/Tornado.lua -l 1 -E $@
+   ./tg/bin/telegram-cli -k ./tg/tg-server.pub -s ./bot/SuperGroup.lua -l 1 -E $@
 
    sleep 3
 
