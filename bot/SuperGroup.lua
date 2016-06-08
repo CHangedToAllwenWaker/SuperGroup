@@ -237,21 +237,7 @@ function create_config( )
     },
     sudo_users = {174770816},--Sudo users
     moderation = {data = 'data/moderation.json'},
-    about_text = [[Tornado v3
-An advanced administration bot based on TG-CLI written in Lua
-
-Admins
-@allwen [Founder]
-@parsaalemi [Developer]
-
-Special thanks to
-parsaalemi
-parham
-
-Our channels
-@tornado_team
-
-]],
+    about_text = [[Put Everything You Like :) ( Don t Forgot Edit plugins/stats.lua]],
     help_text_realm = [[
 Realm Commands:
 
