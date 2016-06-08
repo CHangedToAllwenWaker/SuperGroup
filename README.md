@@ -1,5 +1,5 @@
 #SuperGroup Source
-*A Source For Your SuperGroup Bot 😉*
+*A Source For Your SuperGroup Bot *
 
 _Put Your Id In bot/SuperGroup.lua_
 
