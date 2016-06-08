@@ -22,20 +22,20 @@ local function warn_by_username(extra, success, result) -- /warn <@username>
   if value then
    if value == '1' then
     redis:hset(hash, msg.id, '2')
-   text = '[ '..name..' ]\nYou Re Warned !\nNumber Of Your Warns 2/4\nFor Unwarn Go To @AllwenPvBot'
+   text = '[ '..name..' ]\nYou Re Warned !\nNumber Of Your Warns 2/4'
    elseif value == '2' then
   redis:hset(hash, msg.id, '3')
-  text = '[ '..name..' ]\nYou Are Warned !\nNumber Of Your Warns 3/4\nFor Unwarn Go To @AllwenPvBot'
+  text = '[ '..name..' ]\nYou Are Warned !\nNumber Of Your Warns 3/4'
    elseif value == '3' then
    redis:hdel(hash, msg.id, '0')
    local hash =  'banned:'..target
    redis:sadd(hash, msg.id)
-  text = '[ '..name..' ]\nYou re Warned And Kicked !\nNumber Of Your Warns Is 4\4\n For Back To Group Go To @AllwenPvBot'
+  text = '[ '..name..' ]\nYou re Warned And Kicked !\nNumber Of Your Warns Is 4\4'
   chat_del_user(receiver, 'user#id'..msg.id, ok_cb, false)
    end
   else
    redis:hset(hash, msg.id, '1')
-   text = '[ '..name..' ]\nYou Re Warned !\nNumber Of Your Warns 1/4\nFor Unwarn Go To @AllwenPvBot'
+   text = '[ '..name..' ]\nYou Re Warned !\nNumber Of Your Warns 1/4'
   end
   send_msg(receiver, text, ok_cb, false)
   else
@@ -67,20 +67,20 @@ local function warn_by_reply(extra, success, result) -- (on reply) /warn
   if value then
    if value == '1' then
     redis:hset(hash, msg.from.id, '2')
-   text = '[ '..name..' ] \n You Re Warned !\nNumber Of Your Warns 2/4\nFor Unwarn Go To @AllwenPvBot '
+   text = '[ '..name..' ] \n You Re Warned !\nNumber Of Your Warns 2/4'
    elseif value == '2' then
   redis:hset(hash, msg.from.id, '3')
-  text = '[ '..name..' ] \n You Re Warned !\nNumber Of Your Warns 3/4\nFor Unwarn Go To @AllwenPvBot '
+  text = '[ '..name..' ] \n You Re Warned !\nNumber Of Your Warns 3/4'
    elseif value == '3' then
    redis:hdel(hash, msg.from.id, '0')
-  text = '[ '..name..' ] \nYou re Warned And Kicked !\nNumber Of Your Warns Is 4\4\n For Back To Group Go To @AllwenPvBot '
+  text = '[ '..name..' ] \nYou re Warned And Kicked !\nNumber Of Your Warns Is 4\4'
   local hash =  'banned:'..target
   redis:sadd(hash, msg.from.id)
   chat_del_user(receiver, 'user#id'..msg.from.id, ok_cb, false)
    end
   else
    redis:hset(hash, msg.from.id, '1')
-   text = '[ '..name..' ]\nYou Re Warned !\nNumber Of Your Warns 1/4\nFor Unwarn Go To @AllwenPvBot'
+   text = '[ '..name..' ]\nYou Re Warned !\nNumber Of Your Warns 1/4'
   end
   reply_msg(extra.Reply, text, ok_cb, false)
 end
