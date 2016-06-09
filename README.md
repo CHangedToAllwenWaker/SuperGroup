@@ -3,13 +3,17 @@
 
 _Put Your Id In bot/SuperGroup.lua_
 
-#[Change SuperGroup.lua Name](https://github.com/allwenwaker/SuperGroup/tree/supergroups/bot/SuperGroup.lua)
+#[Change SuperGroup.lua Name](https://github.com/AllwenWaker/SuperGroup/blob/supergroups/bot/SuperGroup.lua)
 *When You Change This File Name , You Need Edit launch.sh !*
 
-#[Change plugins/supergroup.lua](https://github.com/allwenwaker/supergroups/tree/supergroups/plugins/supergroup.lua)
+#[Change plugins/supergroup.lua](https://github.com/AllwenWaker/SuperGroup/blob/supergroups/plugins/supergroup.lua)
 *You Can Edit Setting Massages !*
 
-#[Installation](https://telegram.me/antispam_api_bot)
+
+
+
+
+#[Installation The Bot](https://telegram.me/antispam_api_bot)
 In Linux & Other Servers 
 
 git clone https://github.com/allwenwaker/SuperGroup
@@ -20,6 +24,6 @@ cd SuperGroup
 
 ./launch.sh
 
-In Free Servers To [C9](https://c9.io) Or (Koding](https://koding.com)
+In Free Servers To [C9](https://c9.io) Or [Koding](https://koding.com)
 
 
