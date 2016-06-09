@@ -1033,7 +1033,7 @@ function show_supergroup_settingsmod(msg, target)
   local gp_type = data[tostring(msg.to.id)]['group_type']
   
   local settings = data[tostring(target)]['settings']
-  local text = "SuperGroup Name : "..msg.to.print_name.."\nSuperGroup Id"..msg.to.id.."\n➖➖➖➖➖➖➖➖➖➖➖➖➖\nSuperGroup #settings:\nLock #links : "..settings.lock_link.."\nLock #flood: "..settings.flood.."\nFlood #sensitivity : "..NUM_MSG_MAX.."\nLock #reply: "..settings.reply.."\nLock #operator: "..settings.operator.."\nLock #spam: "..settings.lock_spam.."\nLock #Arabic: "..settings.lock_arabic.."\nLock #Member: "..settings.lock_member.."\nLock #RTL: "..settings.lock_rtl.."\nLock #Tgservice: "..settings.lock_tgservice.."\nLock #media: "..settings.media.."\nLock #fwd: "..settings.fwd.."\nLock #sticker: "..settings.lock_sticker.."\nLock #tag: "..settings.tag.."\nLock #english: "..settings.english.."\nLock #join: "..settings.join.."\nLock #leave: "..settings.leave.."\nLock #bots: "..bots_protection.."\ngroup #type: "..gp_type.."\n#Public: "..settings.public.."\nStrict #settings: "..settings.strict.."\nswitch:\n Lock #etehad: "..settings.etehad.."\nLock #all: "..settings.all.."\n"  return text
+  local text = "SuperGroup Name : "..msg.to.print_name.."\nSuperGroup Id : "..msg.to.id.."\n\nSuperGroup #settings:\nLock #links : "..settings.lock_link.."\nLock #flood: "..settings.flood.."\nFlood #sensitivity : "..NUM_MSG_MAX.."\nLock #reply: "..settings.reply.."\nLock #operator: "..settings.operator.."\nLock #spam: "..settings.lock_spam.."\nLock #Arabic: "..settings.lock_arabic.."\nLock #Member: "..settings.lock_member.."\nLock #RTL: "..settings.lock_rtl.."\nLock #Tgservice: "..settings.lock_tgservice.."\nLock #media: "..settings.media.."\n Lock #fosh: "..settings.fosh.."\nLock #emoji: "..settings.emoji.."\nLock #fwd: "..settings.fwd.."\nLock #sticker: "..settings.lock_sticker.."\nLock #tag: "..settings.tag.."\nLock #english: "..settings.english.."\nLock #join: "..settings.join.."\nLock #leave: "..settings.leave.."\nLock #sticker: "..settings.sticker.."\nLock #bots: "..bots_protection.."\ngroup #type: "..gp_type.."\nGroup #Public: "..settings.public.."\nStrict #settings: "..settings.strict.."\n\nLock #etehad: "..settings.etehad.."\nLock #all: "..settings.all.."\n"  return text
   end
 local function promote_admin(receiver, member_username, user_id)
   local data = load_data(_config.moderation.data)
@@ -1734,7 +1734,7 @@ local function run(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-				return "📝SuperGroup Name:" ..string.gsub(msg.to.print_name, "_", " ").. "\n🆔SuperGroup ID"..msg.to.id.."\n"
+				return "📝SuperGroup Name : " ..string.gsub(msg.to.print_name, "_", " ").. "\n\n🆔SuperGroup ID : "..msg.to.id.."\n"
 			end
 		end
 
@@ -1785,7 +1785,7 @@ local function run(msg, matches)
 				return "Create a link using /newlink first!\n\nOr if I am not creator use /setlink to set your link"
 			end
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
-			return "🔷Group Link For: @"..msg.to.id.."\n\n🔶Group link:\n"..group_link
+			return "The Group link:\n"..group_link"
 		end
 
 		if matches[1] == "invite" and is_sudo(msg) then
